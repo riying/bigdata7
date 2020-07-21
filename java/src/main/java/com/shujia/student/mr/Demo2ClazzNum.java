@@ -1,12 +1,16 @@
-package com.shujia.student;
+package com.shujia.student.mr;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Demo1ClazzNum {
+public class Demo2ClazzNum {
     public static void main(String[] args) throws Exception {
+
+
+        long start = System.currentTimeMillis();
+
 
         /*
          *统计每个班级学生的人数
@@ -22,17 +26,6 @@ public class Demo1ClazzNum {
 
         String line;
 
-        ArrayList<String> clazzs = new ArrayList<String>();
-
-        while ((line = bufferedReader.readLine()) != null) {
-            String clazz = line.split(",")[4];
-            clazzs.add(clazz);
-        }
-
-
-        bufferedReader.close();
-
-
         /*
          *统计每个班级的人数
          */
@@ -40,7 +33,8 @@ public class Demo1ClazzNum {
         //存储计算结果的map
         HashMap<String, Integer> clazzNum = new HashMap<String, Integer>();
 
-        for (String clazz : clazzs) {
+        while ((line = bufferedReader.readLine()) != null) {
+            String clazz = line.split(",")[4];
 
             //判断班级是否存在
             //如果存在返回人数，不存在返回null
@@ -53,9 +47,16 @@ public class Demo1ClazzNum {
                 //存在的时候加1
                 clazzNum.put(clazz, integer + 1);
             }
+
         }
 
+        bufferedReader.close();
+
         System.out.println(clazzNum);
+
+        long end = System.currentTimeMillis();
+
+        System.out.println(end - start);
 
 
     }
